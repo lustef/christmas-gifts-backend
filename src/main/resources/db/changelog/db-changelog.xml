@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd"
+                   logicalFilePath="db-changelog.xml">
+
+    <changeSet id="initial" author="Lukasz">
+        <createTable tableName="user_account">
+            <column type="BIGSERIAL" name="id">
+                <constraints primaryKey="true" primaryKeyName="pk_user"/>
+            </column>
+            <column name="created" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column type="varchar(255)" name="username"/>
+            <column type="varchar(255)" name="password"/>
+            <column type="varchar(255)" name="desire"/>
+            <column type="float" name="gift_receiver"/>
+            <column type="varchar(255)" name="role"/>
+            <column type="BIGSERIAL" name="room_id"/>
+        </createTable>
+        <createTable tableName="room">
+            <column type="BIGSERIAL" name="id">
+                <constraints primaryKey="true" primaryKeyName="pk_room"/>
+            </column>
+            <column type="varchar(255)" name="name"/>
+            <column name="created" type="TIMESTAMP WITHOUT TIME ZONE"/>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="user_account" baseColumnNames="room_id"
+                                 constraintName="fk_user_room"
+                                 referencedTableName="room"
+                                 referencedColumnNames="id"
+        />
+    </changeSet>
+
+</databaseChangeLog>
