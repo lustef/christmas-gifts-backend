@@ -6,7 +6,7 @@
 
     <changeSet id="initial" author="Lukasz">
         <createTable tableName="user_account">
-            <column type="BIGSERIAL" name="id">
+            <column type="BIGSERIAL" name="id" autoIncrement="true">
                 <constraints primaryKey="true" primaryKeyName="pk_user"/>
             </column>
             <column name="created" type="TIMESTAMP WITHOUT TIME ZONE"/>
@@ -18,7 +18,7 @@
             <column type="BIGSERIAL" name="room_id"/>
         </createTable>
         <createTable tableName="room">
-            <column type="BIGSERIAL" name="id">
+            <column type="BIGSERIAL" name="id" autoIncrement="true">
                 <constraints primaryKey="true" primaryKeyName="pk_room"/>
             </column>
             <column type="varchar(255)" name="name"/>
